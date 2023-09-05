@@ -15,6 +15,14 @@ function App() {
   const [bioData, setBioData] = useState([]);
   const [artistData, setArtistData] = useState([]);
   const [id, setId] = useState('');
+  const [newSearch,setNewSearch] = useState("")
+
+  function musicSearch(music){
+    setNewSearch(music.toLowerCase())
+  }
+  const filterSearch = spotifyData.filter((data)=>{
+    return data.name.toLowerCase().includes(newSearch) ||data.artists[0].name.toLowerCase().includes(newSearch)
+  })
 
   useEffect(() => {
 
@@ -45,6 +53,7 @@ function App() {
   function addArtistId(id) {
     setId(id);
   }
+  
 
   return (
     <div className="App">
@@ -56,7 +65,7 @@ function App() {
       <Routes>
         <Route path="/main" element={<Main spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData}/>}/>
         <Route path= {`/${id}`} element={<ArtistInfo bioData={bioData} artistData={artistData}  />}/>
-        <Route path="/search" element={<Search spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData} />}/>
+        <Route path="/search" element={<Search spotifyData={filterSearch} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData} newSearch={newSearch} musicSearch={musicSearch} />}/>
       </Routes>
     </div>
     <Player />
