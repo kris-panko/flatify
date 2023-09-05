@@ -1,8 +1,10 @@
 import albumIcon from './assets/icons8-albums-32.png'
 import FavoritesCard from './FavoritesCard';
-function Favorites() {
+function Favorites({favoritedData}) {
 
-
+    const favoritedCards = favoritedData.map(song => {
+      return  <FavoritesCard image={song.image} artist={song.artist} title={song.title} stars={song.stars} key={song.name}/>
+    })
 
     return (
         <div className="favorites">
@@ -11,7 +13,7 @@ function Favorites() {
                 <p>Favorites</p>
             </div>
             <div className='favorite-songs-container'>
-                <FavoritesCard />
+                {favoritedCards}
             </div> 
         </div>
     )
