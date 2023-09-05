@@ -3,7 +3,7 @@ import pauseBtn from './assets/icons8-pause-button-32.png';
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
 function SongCard({name, artist, image, id, addBioData, addArtistData, addArtistId}) {
-
+    const nameReduced = name.substring(0, 19);
     const [isClicked, setIsClicked] = useState(false);
 
     function handleClick() {
@@ -42,7 +42,7 @@ function SongCard({name, artist, image, id, addBioData, addArtistData, addArtist
             <img onClick={handlePageChange} src={image} alt="album cover" className="album-img" />
             </Link>
             <img onClick={handleClick} src={isClicked ? pauseBtn : playBtn} alt="play buttons" className="play-btn" />
-            <h3>{name}</h3>
+            <h3>{name.length > 19 ?  `${nameReduced}...` : `${nameReduced}`}</h3>
             <p>{artist}</p>
         </div>
     )

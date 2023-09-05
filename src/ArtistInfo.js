@@ -3,12 +3,19 @@
 function ArtistInfo({bioData, artistData}) {
     let key;
     let bioElement;
+
+    // const parsedBio = (el) => {
+    //     const div = document.createElement('div');
+
+    // }
+
     if (bioData.length > 0) {
         key = Object.keys(bioData[0])[0];
         bioElement = bioData[0][key].extract;
     }
+
     
-    console.log(bioElement)
+    console.log(bioData)
 
     return (
         <div className="main">
@@ -26,7 +33,7 @@ function ArtistInfo({bioData, artistData}) {
                 <h1>Genres</h1>
                 <p>{artistData.length > 0 ? artistData[0].genres.join(', ') : "LOADING..."}</p> 
                 <h1>About</h1>
-                {'bio'}
+                <div dangerouslySetInnerHTML={{__html: bioElement}}></div>
             </div>
            
         </div>

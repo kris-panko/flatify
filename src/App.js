@@ -55,8 +55,8 @@ function App() {
       </div>
       <Routes>
         <Route path="/main" element={<Main spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData}/>}/>
-        <Route path= {`/${id}`} element={<ArtistInfo bioData={bioData} artistData={artistData} />}/>
-        <Route path="/search" element={<Search spotifyData={spotifyData} />}/>
+        <Route path= {`/${id}`} element={<ArtistInfo bioData={bioData} artistData={artistData}  />}/>
+        <Route path="/search" element={<Search spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData} />}/>
       </Routes>
     </div>
     <Player />
