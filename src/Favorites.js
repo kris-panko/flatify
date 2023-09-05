@@ -1,5 +1,9 @@
 import albumIcon from './assets/icons8-albums-32.png'
+import FavoritesCard from './FavoritesCard';
 function Favorites() {
+
+
+
     return (
         <div className="favorites">
             <div className="favorites-title">
@@ -7,7 +11,7 @@ function Favorites() {
                 <p>Favorites</p>
             </div>
             <div className='favorite-songs-container'>
-            
+                <FavoritesCard />
             </div> 
         </div>
     )
