@@ -213,6 +213,10 @@ li {
 }
 
 /* Styling for the volume control container */
+.volume-control {
+  display: flex;
+  align-items: center;
+}
 
 
 /* Styling for the volume icon */
