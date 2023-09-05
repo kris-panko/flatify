@@ -2,9 +2,9 @@ import React from 'react';
 import playBtn from './assets/icons8-play-button-32.png'
 import pauseBtn from './assets/icons8-pause-button-32.png';
 
-const PlayPauseButton = ({ isPlaying, setIsPlaying }) => {
+const PlayPauseButton = ({ isPlaying, handlePlayPause }) => {
   const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
+    handlePlayPause(!isPlaying);
   };
 
   return (
