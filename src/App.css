@@ -185,9 +185,36 @@ li {
   transition: width 0.1s linear;
 }
 
-/* Styling for the volume control container */
+/* Styling for the volume control container  */
 .volume-control {
+  display: flex;
+  align-items: center;
+}
 
+/* Styling for the volume icon  */
+.volume-icon {
+  color: #fff;
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/* / Styling for the volume slider container / */
+.volume-slider {
+  width: 60px;
+  height: 6px;
+  background-color: #282828; 
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* / Styling for the volume slider indicator / */
+.volume-slider-indicator {
+  height: 100%;
+  background-color: #1db954; 
+  border-radius: 4px;
+  width: 50%; 
+  transition: width 0.1s linear;
+}
 
 /* -----------------ARTIST INFO PAGE ----------------------- */
 
@@ -365,4 +392,5 @@ li {
   height: 90%;
   margin-top: 30px;
   
+}
 }
