@@ -1,23 +1,22 @@
 // import {useEffect} from 'react';
 import SongCard from "./SongCard";
 
-function Main({spotifyData}) {
-
-    console.log(spotifyData)
+function Main({spotifyData, addArtistData, addBioData, addArtistId}) {
+    
     const songsToRender = spotifyData.filter(song => song.name.length < 17).slice(0, 6).map(song => {
-        return <SongCard name={song.name} image={song.images[0].url} artist={song.artists[0].name} id={song.artists[0].id} key={song.id} />
+        return <SongCard addArtistId={addArtistId} addArtistData={addArtistData} addBioData={addBioData} name={song.name} image={song.images[0].url} artist={song.artists[0].name} id={song.artists[0].id} key={song.id} />
     });
 
     const songsToRender2 = spotifyData.filter(song => song.name.length < 17).slice(6, 12).map(song => {
-        return <SongCard name={song.name} image={song.images[0].url} artist={song.artists[0].name} id={song.artists[0].id} key={song.id} />
+        return <SongCard addArtistId={addArtistId} addArtistData={addArtistData} addBioData={addBioData} name={song.name} image={song.images[0].url} artist={song.artists[0].name} id={song.artists[0].id} key={song.id} />
     });
 
     const songsToRender3 = spotifyData.filter(song => song.name.length < 17).slice(12, 18).map(song => {
-        return <SongCard name={song.name} image={song.images[0].url} artist={song.artists[0].name} id={song.artists[0].id} key={song.id} />
+        return <SongCard addArtistId={addArtistId} addArtistData={addArtistData} addBioData={addBioData} name={song.name} image={song.images[0].url} artist={song.artists[0].name} id={song.artists[0].id} key={song.id} />
     });
 
     const songsToRender4 = spotifyData.filter(song => song.name.length < 17).slice(18, 24).map(song => {
-        return <SongCard name={song.name} image={song.images[0].url} artist={song.artists[0].name} id={song.artists[0].id} key={song.id} />
+        return <SongCard addArtistId={addArtistId} addArtistData={addArtistData} addBioData={addBioData} name={song.name} image={song.images[0].url} artist={song.artists[0].name} id={song.artists[0].id} key={song.id} />
     });
   
 

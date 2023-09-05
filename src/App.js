@@ -2,12 +2,19 @@ import './App.css';
 import Main from './Main';
 import Nav from './Nav';
 import Favorites from './Favorites';
+import Search from './Search';
 import Player from './Player';
+import ArtistInfo from './ArtistInfo';
 import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
 
 function App() {
 
   const [spotifyData, setSpotifyData] = useState([]);
+  const [bioData, setBioData] = useState([]);
+  const [artistData, setArtistData] = useState([]);
+  const [id, setId] = useState('');
 
   useEffect(() => {
 
@@ -27,7 +34,17 @@ function App() {
     .catch(error => console.log('error', error));
     }, [])
 
-    
+  function addBioData(data) {
+    setBioData([data]);
+  }
+
+  function addArtistData(data) {
+    setArtistData([data]);
+  }
+
+  function addArtistId(id) {
+    setId(id);
+  }
 
   return (
     <div className="App">
@@ -36,7 +53,11 @@ function App() {
         <Nav />
         <Favorites />
       </div>
-      <Main spotifyData={spotifyData} />
+      <Routes>
+        <Route path="/main" element={<Main spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData}/>}/>
+        <Route path= {`/${id}`} element={<ArtistInfo bioData={bioData} artistData={artistData} />}/>
+        <Route path="/search" element={<Search spotifyData={spotifyData} />}/>
+      </Routes>
     </div>
     <Player />
   </div>
