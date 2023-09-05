@@ -117,6 +117,32 @@ li {
   transition: all 0.3s ease;
 }
 
+.card-song-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  width: 100%;
+  position: relative;
+  bottom: 55px;
+}
+
+.heart-div {
+  position: relative;
+  right: 20px;
+  top: 20px;
+}
+
+.heart-btn {
+  opacity: 0;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  width: 28px;
+  height: auto;
+}
+
+
+
 .card .album-img {
   width: 173px;
   height: auto;
@@ -134,7 +160,8 @@ li {
   cursor: pointer;
 }
 
-.card:hover .play-btn {
+.card:hover .play-btn, 
+.card:hover .heart-btn {
   opacity: 1;
 }
 
@@ -187,6 +214,9 @@ li {
 
 /* Styling for the volume control container */
 .volume-control {
+
+}
+=======
   display: flex;
   align-items: center;
 }
@@ -215,6 +245,7 @@ li {
   width: 50%; /* Adjusted dynamically based on the current volume */
   transition: width 0.1s linear;
 }
+
 
 
 
@@ -310,6 +341,33 @@ li {
 .nav-container {
   display: flex;
   align-items: center;
+}
+
+
+
+/* Styling for the volume icon */
+.volume-icon {
+  color: #fff; /* Volume icon color */
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/* Styling for the volume slider container */
+.volume-slider {
+  width: 60px;
+  height: 6px;
+  background-color: #282828; /* Volume slider background color */
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Styling for the volume slider indicator */
+.volume-slider-indicator {
+  height: 100%;
+  background-color: #1db954; /* Volume slider indicator color */
+  border-radius: 4px;
+  width: 50%; /* Adjusted dynamically based on the current volume */
+  transition: width 0.1s linear;
 }
 
 
