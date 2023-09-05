@@ -149,3 +149,68 @@ li {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+/* ---------------------------Player-----------------------
+/* Styling for the Play/Pause button */
+.play-pause-button {
+  background-color: transparent;
+  border: none;
+  color: #fff; /* Play/Pause button color */
+  cursor: pointer;
+  font-size: 24px;
+  margin-right: 20px;
+}
+
+/* Styling for the song information */
+.song-info {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+/* Styling for the progress bar container */
+.progress-bar {
+  flex-grow: 1;
+  height: 8px;
+  background-color: #282828; /* Progress bar background color */
+  border-radius: 4px;
+  position: relative;
+}
+
+/* Styling for the progress bar indicator */
+.progress {
+  height: 100%;
+  background-color: #1db954; /* Progress bar indicator color */
+  border-radius: 4px;
+  width: 0; /* Adjusted dynamically based on the current progress */
+  transition: width 0.1s linear;
+}
+
+/* Styling for the volume control container */
+.volume-control {
+  display: flex;
+  align-items: center;
+}
+
+/* Styling for the volume icon */
+.volume-icon {
+  color: #fff; /* Volume icon color */
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/* Styling for the volume slider container */
+.volume-slider {
+  width: 60px;
+  height: 6px;
+  background-color: #282828; /* Volume slider background color */
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Styling for the volume slider indicator */
+.volume-slider-indicator {
+  height: 100%;
+  background-color: #1db954; /* Volume slider indicator color */
+  border-radius: 4px;
+  width: 50%; /* Adjusted dynamically based on the current volume */
+  transition: width 0.1s linear;
+}
