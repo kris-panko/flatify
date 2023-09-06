@@ -4,18 +4,35 @@ import {useState} from 'react';
 import activeHeart from './assets/heart-active.png';
 import inactiveHeart from './assets/heart-inactive.png';
 import {Link} from 'react-router-dom';
-function SongCard({name, artist, image, id, addBioData, addArtistData, addArtistId}) {
+function SongCard({addNewFavoritedSong, name, artist, image, id, addBioData, addArtistData, addArtistId, addIsFavorited, isFavorited}) {
     const nameReduced = name.substring(0, 19);
     const [isClicked, setIsClicked] = useState(false);
-    const [heartIsClicked, setHeartIsClicked] = useState(false);
-
+    const url = 'http://localhost:3001/spotify';
     function handleClick() {
         setIsClicked(!isClicked)
     }
 
     function handleHeartClick() {
-        setHeartIsClicked(!heartIsClicked);
+        const favoritedObj = {
+            title: name,
+            artist: artist,
+            image: image,
+            stars: 1
+        }
+
+        fetch(url, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(favoritedObj)
+        })
+        .then(resp => resp.json())
+        .then(data => addNewFavoritedSong(data))
+
+
+        addIsFavorited(name);
     }
+
+    const heartIsClicked = isFavorited.includes(name);
 
     function handlePageChange() {
         addArtistId(id)

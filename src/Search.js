@@ -1,9 +1,9 @@
 import React from "react";
 import SongCard from "./SongCard";
-function Search({spotifyData, addArtistData, addArtistId, addBioData, newSearch, musicSearch}) {
+function Search({addNewFavoritedSong, addIsFavorited, isFavorited, spotifyData, addArtistData, addArtistId, addBioData, newSearch, musicSearch}) {
     
     const songsToRender = spotifyData.filter(song => song.name.length < 39).map(song => {
-        return <SongCard addArtistData={addArtistData} addBioData={addBioData} addArtistId={addArtistId}  name={song.name} image={song.images[0].url} artist={song.artists[0].name} id={song.artists[0].id} key={song.id} />
+        return <SongCard addNewFavoritedSong={addNewFavoritedSong} addIsFavorited={addIsFavorited} isFavorited={isFavorited} addArtistData={addArtistData} addBioData={addBioData} addArtistId={addArtistId}  name={song.name} image={song.images[0].url} artist={song.artists[0].name} id={song.artists[0].id} key={song.id} />
     });
 
     function newMusicSearch(e){
