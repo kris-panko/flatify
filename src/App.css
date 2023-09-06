@@ -217,8 +217,7 @@ li {
   background-color: #1db954;
   border-radius: 4px;
   transition: width 0.1s linear;
-  margin: 0 auto;
-  float: left;
+  margin: 0;
 }
 
 /* Styling for the ProgressSlider */
@@ -233,11 +232,47 @@ li {
   outline: none;
   position: absolute;
   top: 0;
-  bottom: 0; /* Vertically align within the progress bar */
+  bottom: 0;
   left: 0;
   right: 0;
-  margin: auto; /* Horizontally center within the progress bar */
+  margin: auto;
   cursor: pointer;
+  --slider-color: #1db954;
+
+  /* Custom styles for the slider thumb */
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px; /* Adjust the width of the slider button */
+    height: 20px; /* Adjust the height of the slider button */
+    background-color: #1db954;
+    border: 2px solid white;
+    border-radius: 50%; /* Make it a circle */
+    position: relative;
+    z-index: 2; /* Ensure it's above the progress bar */
+    transform: translateX(-50%); /* Start from the left edge */
+  }
+
+  /* Add the cool effects when grabbing the slider thumb */
+  &:active::-webkit-slider-thumb {
+    transform: scale(1.2); /* Scale up when active/grabbed */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); /* Add a shadow */
+
+    /* Create the larger white circle (before) */
+    &::before {
+      content: "";
+      width: 40px; /* Adjust the size of the larger circle */
+      height: 40px; /* Adjust the size of the larger circle */
+      background-color: white;
+      border-radius: 50%; /* Make it a circle */
+      position: absolute;
+      top: 50%;
+      left: 0; /* Adjust to start from the left */
+      transform: translate(-50%, -50%);
+      opacity: 0; /* Initially hidden */
+      transition: opacity 0.2s ease;
+      z-index: 1; /* Below the slider thumb */
+    }
+  }
 }
 
 /* Styling for the volume control container */

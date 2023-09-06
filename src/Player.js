@@ -9,7 +9,7 @@ const Player = () => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState(60);
   const [volume, setVolume] = useState(0.5);
 
   // Function to handle play/pause
