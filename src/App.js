@@ -10,11 +10,29 @@ import { Route, Routes } from 'react-router-dom';
 
 
 function App() {
-
+  const url = 'http://localhost:3001/spotify';
   const [spotifyData, setSpotifyData] = useState([]);
   const [bioData, setBioData] = useState([]);
   const [artistData, setArtistData] = useState([]);
   const [id, setId] = useState('');
+  const [newSearch,setNewSearch] = useState("")
+  const [isFavorited, setIsFavorited] = useState([]);
+  const [favoritedData, setFavoritedData] = useState([]);
+
+  function addNewFavoritedSong(song) {
+    setFavoritedData([...favoritedData, song]);
+  }
+
+  function addIsFavorited(name) {
+    setIsFavorited([...isFavorited, name]);
+  }
+
+  function musicSearch(music){
+    setNewSearch(music.toLowerCase())
+  }
+  const filterSearch = spotifyData.filter((data)=>{
+    return data.name.toLowerCase().includes(newSearch) ||data.artists[0].name.toLowerCase().includes(newSearch)
+  })
 
   useEffect(() => {
 
@@ -32,6 +50,11 @@ function App() {
       setSpotifyData(result.albums.items)
     })
     .catch(error => console.log('error', error));
+
+    fetch(url)
+    .then(resp => resp.json())
+    .then(data => setFavoritedData(data));
+
     }, [])
 
   function addBioData(data) {
@@ -45,18 +68,19 @@ function App() {
   function addArtistId(id) {
     setId(id);
   }
+  
 
   return (
     <div className="App">
     <div className="horizontal">
       <div className="left-block">
         <Nav />
-        <Favorites />
+        <Favorites favoritedData={favoritedData} />
       </div>
       <Routes>
-        <Route path="/main" element={<Main spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData}/>}/>
+        <Route path="/main" element={<Main addNewFavoritedSong={addNewFavoritedSong} addIsFavorited={addIsFavorited} isFavorited={isFavorited} spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData}/>}/>
         <Route path= {`/${id}`} element={<ArtistInfo bioData={bioData} artistData={artistData}  />}/>
-        <Route path="/search" element={<Search spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData} />}/>
+        <Route path="/search" element={<Search addNewFavoritedSong={addNewFavoritedSong} addIsFavorited={addIsFavorited} isFavorited={isFavorited} spotifyData={filterSearch} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData} newSearch={newSearch} musicSearch={musicSearch} />}/>
       </Routes>
     </div>
     <Player />

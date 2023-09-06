@@ -110,7 +110,7 @@ li {
 
 .card {
   width: 205px;
-  height: 283px;
+  height: 303px;
   background-color: #181818;
   padding: 16px;
   border-radius: 10px;
@@ -131,6 +131,8 @@ li {
   position: relative;
   right: 20px;
   top: 20px;
+  align-items: center;
+
 }
 
 .heart-btn {
@@ -217,6 +219,7 @@ li {
   display: flex;
   align-items: center;
 }
+
 
 /* Styling for the volume icon */
 .volume-icon {
@@ -429,3 +432,104 @@ li {
   margin-top: 30px;
   
 }
+
+/* ------------------------ FAVORITE CARDS ----------------------- */
+
+
+.ratings-btn {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #3e3e3e;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+.change-rating {
+  
+  
+  margin-right: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.favorites-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.favorites-song-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 70px;
+  margin-left: 20px;
+}
+
+.favorites-song-info p,
+.favorites-song-info h5 {
+  font-size: 110%;
+}
+
+.favorites-album-img {
+  width: 70px;
+  border-radius: 10px;
+  height: auto;
+}
+
+.favorites-card-heart {
+  height: 30px;
+  width: auto;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.favorites-card:hover .favorites-card-heart{
+  opacity: 1;
+  cursor: pointer;
+}
+
+.favorites-card:hover {
+  background-color: #242424;
+}
+
+.favorites-card:hover .change-rating {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.span-container {
+  display: flex;
+  align-items: center;
+}
+
+.bullet {
+  margin: 0 10px;
+}
+
+.ratings {
+  display: flex;
+  cursor: pointer;
+}
+
+.ratings div {
+  margin-right: 2px;
+}
+
+.favorites-left-block {
+  display: flex;
+  width: 10vw;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+
+
+

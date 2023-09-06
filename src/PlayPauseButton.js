@@ -4,7 +4,7 @@ import pauseBtn from './assets/icons8-pause-button-32.png';
 
 const PlayPauseButton = ({ isPlaying, handlePlayPause }) => {
   const togglePlayPause = () => {
-    handlePlayPause(!isPlaying);
+    setIsPlaying(!isPlaying); // Toggle isPlaying state
   };
 
   return (
