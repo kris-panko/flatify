@@ -1,102 +1,10 @@
-{
-  "spotify": [
+"spotify": [
     {
       "title": "Demons",
       "artist": "Doja Cat",
       "image": "https://i.scdn.co/image/ab67616d0000b273d5fe37ec6d8f78ffc5437859",
       "stars": 1,
       "id": 1
-    },
-    {
-      "title": "ESTRELLA",
-      "artist": "Mora",
-      "image": "https://i.scdn.co/image/ab67616d0000b2734cc96ed1e38fa517608c2fb0",
-      "stars": 1,
-      "id": 2
-    },
-    {
-      "title": "Demons",
-      "artist": "Doja Cat",
-      "image": "https://i.scdn.co/image/ab67616d0000b273d5fe37ec6d8f78ffc5437859",
-      "stars": 1,
-      "id": 3
-    },
-    {
-      "title": "Demons",
-      "artist": "Doja Cat",
-      "image": "https://i.scdn.co/image/ab67616d0000b273d5fe37ec6d8f78ffc5437859",
-      "stars": 1,
-      "id": 4
-    },
-    {
-      "title": "Demons",
-      "artist": "Doja Cat",
-      "image": "https://i.scdn.co/image/ab67616d0000b273d5fe37ec6d8f78ffc5437859",
-      "stars": 1,
-      "id": 5
-    },
-    {
-      "title": "Demons",
-      "artist": "Doja Cat",
-      "image": "https://i.scdn.co/image/ab67616d0000b273d5fe37ec6d8f78ffc5437859",
-      "stars": 1,
-      "id": 6
-    },
-    {
-      "title": "Demons",
-      "artist": "Doja Cat",
-      "image": "https://i.scdn.co/image/ab67616d0000b273d5fe37ec6d8f78ffc5437859",
-      "stars": 1,
-      "id": 7
-    },
-    {
-      "title": "Demons",
-      "artist": "Doja Cat",
-      "image": "https://i.scdn.co/image/ab67616d0000b273d5fe37ec6d8f78ffc5437859",
-      "stars": 1,
-      "id": 8
-    },
-    {
-      "title": "Demons",
-      "artist": "Doja Cat",
-      "image": "https://i.scdn.co/image/ab67616d0000b273d5fe37ec6d8f78ffc5437859",
-      "stars": 1,
-      "id": 9
-    },
-    {
-      "title": "Demons",
-      "artist": "Doja Cat",
-      "image": "https://i.scdn.co/image/ab67616d0000b273d5fe37ec6d8f78ffc5437859",
-      "stars": 1,
-      "id": 10
-    },
-    {
-      "title": "Come See Me",
-      "artist": "Rod Wave",
-      "image": "https://i.scdn.co/image/ab67616d0000b273f98163a308bec201b648a7be",
-      "stars": 1,
-      "id": 11
-    },
-    {
-      "title": "CODA",
-      "artist": "Yeruza",
-      "image": "https://i.scdn.co/image/ab67616d0000b2732e32783f693ca5f2128c5f0e",
-      "stars": 1,
-      "id": 12
-    },
-    {
-      "title": "Club Romantech",
-      "artist": "Icona Pop",
-      "image": "https://i.scdn.co/image/ab67616d0000b2730f8c3812f2ce29f1feadcf94",
-      "stars": 1,
-      "id": 13
-    },
-    {
-      "title": "Kat Food",
-      "artist": "Lil Wayne",
-      "image": "https://i.scdn.co/image/ab67616d0000b27307d232b7518af4b34e013df0",
-      "stars": 1,
-      "id": 14
     }
   ]
-}
+

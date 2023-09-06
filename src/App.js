@@ -34,6 +34,11 @@ function App() {
     return data.name.toLowerCase().includes(newSearch) ||data.artists[0].name.toLowerCase().includes(newSearch)
   })
 
+  function handleDelete(songId){
+    const newData = favoritedData.filter(song => songId!== song.id)
+    setFavoritedData(newData)
+  }
+
   useEffect(() => {
 
     const myHeaders = new Headers();
@@ -75,7 +80,7 @@ function App() {
     <div className="horizontal">
       <div className="left-block">
         <Nav />
-        <Favorites favoritedData={favoritedData} />
+        <Favorites favoritedData={favoritedData} handleDelete={handleDelete}/>
       </div>
       <Routes>
         <Route path="/main" element={<Main addNewFavoritedSong={addNewFavoritedSong} addIsFavorited={addIsFavorited} isFavorited={isFavorited} spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData}/>}/>
