@@ -32,11 +32,17 @@ const Player = () => {
     setDuration(audioRef.current.duration);
   };
 
+    // Function to handle seek
+const handleSeek = (newTime) => {
+    audioRef.current.currentTime = newTime;
+    setCurrentTime(newTime);
+  };
+
   return (
     <div className="player">
-      <PlayPauseButton isPlaying={isPlaying} onPlayPause={handlePlayPause} />
+      <PlayPauseButton isPlaying={isPlaying} handlePlayPause={handlePlayPause} />
       <SongInfo />
-      <ProgressBar currentTime={currentTime} duration={duration} />
+      <ProgressBar currentTime={currentTime} duration={duration} handleSeek={handleSeek}/>
       <VolumeControl volume={volume} onVolumeChange={handleVolumeChange} />
       <audio
         ref={audioRef}
@@ -50,4 +56,5 @@ const Player = () => {
     </div>
   );
 };
+
 export default Player;

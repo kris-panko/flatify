@@ -4,12 +4,12 @@ import pauseBtn from './assets/icons8-pause-button-32.png';
 
 const PlayPauseButton = ({ isPlaying, handlePlayPause }) => {
   const togglePlayPause = () => {
-    setIsPlaying(!isPlaying); // Toggle isPlaying state
+    handlePlayPause(!isPlaying); // Toggle isPlaying state
   };
 
   return (
     <button className="play-pause-button" onClick={togglePlayPause}>
-      {isPlaying ? <img src={playBtn}></img> : <img src={pauseBtn}></img>}
+      {isPlaying ? <img src={pauseBtn} alt="Pause" /> : <img src={playBtn} alt="Play" />}
     </button>
   );
 };
