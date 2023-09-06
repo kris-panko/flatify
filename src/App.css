@@ -279,12 +279,13 @@ li {
 .volume-control {
   display: flex;
   align-items: center;
+  position: relative;
+  left: 66%;
+  bottom: 7px;
 }
-
 
 /* Styling for the volume icon */
 .volume-icon {
-  color: #fff; /* Volume icon color */
   font-size: 24px;
   margin-right: 10px;
 }
@@ -293,7 +294,6 @@ li {
 .volume-slider {
   width: 60px;
   height: 6px;
-  background-color: #282828; /* Volume slider background color */
   border-radius: 4px;
   margin-right: 10px;
 }
@@ -301,10 +301,15 @@ li {
 /* Styling for the volume slider indicator */
 .volume-slider-indicator {
   height: 100%;
-  background-color: #1db954; /* Volume slider indicator color */
   border-radius: 4px;
   width: 50%; /* Adjusted dynamically based on the current volume */
   transition: width 0.1s linear;
+}
+/* Custom styles for the slider thumb */
+&::-webkit-slider-thumb {
+  /* ... */
+  background-color: #1db954; /* Adjust this color */
+  /* ... */
 }
 
 
