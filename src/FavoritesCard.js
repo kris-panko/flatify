@@ -1,9 +1,13 @@
 
 import heartActive from './assets/icons8-broken-heart-32.png';
 import {useState} from 'react';
-function FavoritesCard({id, stars, title, artist, image, updateStarRating}) {
+
+function FavoritesCard({stars, title, artist, image,id,handleDelete, updateStarRating}) {
+
 
     const [isClicked, setIsClicked] = useState(false);
+
+    const API = "http://localhost:3001/spotify"
 
     function handleClick() {
         setIsClicked(true)
@@ -23,6 +27,13 @@ function FavoritesCard({id, stars, title, artist, image, updateStarRating}) {
         })
         .catch((error) => console.error('Error updating star rating:', error));
         setIsClicked(false);
+    }
+    function deleteFav(){
+        fetch(`${API}/${id}`,{
+        method: 'DELETE',
+    })
+        .then (r => r.json())
+        .then (() => handleDelete(id))
     }
 
     const starCount = stars;
@@ -50,7 +61,7 @@ function FavoritesCard({id, stars, title, artist, image, updateStarRating}) {
                                 <button className='ratings-btn' onClick={handleClick}>EDIT STARS</button>}
                 </div>
                 <div>
-                    <img className='favorites-card-heart' src={heartActive} alt="delete" />
+                    <img className='favorites-card-heart' src={heartActive} alt="delete" onClick={deleteFav} />
                 </div>
             </div> 
         </div>
