@@ -1,6 +1,6 @@
 import React from 'react';
 
-const VolumeControl = ({ volume, setVolume }) => {
+const VolumeControl = ({ volume, handleVolumeChange }) => {
   // Handle volume control
 
   return (

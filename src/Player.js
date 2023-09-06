@@ -12,21 +12,39 @@ const Player = () => {
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.5);
 
-  // Handle audio playback events and update state
+  // Function to handle play/pause
+  const handlePlayPause = () => {
+    setIsPlaying((prevState) => !prevState);
+  };
+
+  // Function to handle volume change
+  const handleVolumeChange = (newVolume) => {
+    setVolume(newVolume);
+  };
+
+  // Function to handle time update
+  const handleTimeUpdate = () => {
+    setCurrentTime(audioRef.current.currentTime);
+  };
+
+  // Function to handle loaded metadata
+  const handleLoadedMetadata = () => {
+    setDuration(audioRef.current.duration);
+  };
 
   return (
     <div className="player">
-      <PlayPauseButton isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+      <PlayPauseButton isPlaying={isPlaying} onPlayPause={handlePlayPause} />
       <SongInfo />
       <ProgressBar currentTime={currentTime} duration={duration} />
-      <VolumeControl volume={volume} setVolume={setVolume} />
+      <VolumeControl volume={volume} onVolumeChange={handleVolumeChange} />
       <audio
         ref={audioRef}
         src="your-audio-file.mp3"
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-        onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
-        onLoadedMetadata={() => setDuration(audioRef.current.duration)}
+        onPlay={handlePlayPause}
+        onPause={handlePlayPause}
+        onTimeUpdate={handleTimeUpdate}
+        onLoadedMetadata={handleLoadedMetadata}
         volume={volume}
       />
     </div>
