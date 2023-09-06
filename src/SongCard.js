@@ -72,7 +72,7 @@ function SongCard({addNewFavoritedSong, name, artist, image, id, addBioData, add
                     <p>{artist}</p>
                 </div>
                 <div className='heart-div'>
-                    <img onClick={handleHeartClick} src={heartIsClicked ? activeHeart : inactiveHeart} alt='heart icon' className='heart-btn'/>                
+                    {heartIsClicked ? <img src={activeHeart} alt='heart icon' className='heart-btn'/> : <img onClick={handleHeartClick} src={inactiveHeart} alt='heart icon' className='heart-btn' />}            
                 </div>
 
             </div>
