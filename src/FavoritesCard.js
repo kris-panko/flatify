@@ -1,7 +1,7 @@
 
 import heartActive from './assets/icons8-broken-heart-32.png';
 import {useState} from 'react';
-function FavoritesCard({stars, title, artist, image}) {
+function FavoritesCard({id, stars, title, artist, image, updateStarRating}) {
 
     const [isClicked, setIsClicked] = useState(false);
 
@@ -10,8 +10,19 @@ function FavoritesCard({stars, title, artist, image}) {
     }
 
     function handleChangeRating(value) {
+        fetch(`http://localhost:3001/spotify/${id}`, {
+        method: 'PATCH',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ stars: value }),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            updateStarRating(data.id, data);
+        })
+        .catch((error) => console.error('Error updating star rating:', error));
         setIsClicked(false);
-        console.log(value)
     }
 
     const starCount = stars;

@@ -19,6 +19,13 @@ function App() {
   const [isFavorited, setIsFavorited] = useState([]);
   const [favoritedData, setFavoritedData] = useState([]);
 
+  function updateStarRating(songId, newRating) {
+    const newFavorites = favoritedData.map((song) => {
+      return song.id!== songId ? song: newRating
+    })
+     setFavoritedData(newFavorites)
+    }
+
   function addNewFavoritedSong(song) {
     setFavoritedData([...favoritedData, song]);
   }
@@ -75,7 +82,7 @@ function App() {
     <div className="horizontal">
       <div className="left-block">
         <Nav />
-        <Favorites favoritedData={favoritedData} />
+        <Favorites updateStarRating={updateStarRating} favoritedData={favoritedData} />
       </div>
       <Routes>
         <Route path="/main" element={<Main addNewFavoritedSong={addNewFavoritedSong} addIsFavorited={addIsFavorited} isFavorited={isFavorited} spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData}/>}/>
