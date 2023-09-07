@@ -88,6 +88,9 @@ li {
   width: 100vw;
   margin: 0px;
   height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -181,6 +184,37 @@ li {
 
 /* ---------------------------Player-----------------------
 /* Styling for the Play/Pause button */
+
+.rhap_container svg {
+  color: #1FDF64;
+}
+
+.rhap_volume-bar .rhap_volume-indicator {
+  opacity: 0;
+}
+
+.rhap_volume-bar-area .rhap_volume-bar {
+  background-color: rgb(45, 45, 45);
+}
+
+.rhap_progress-section .rhap_time {
+  color: white;
+}
+
+.rhap_progress-container .rhap_progress-filled {
+  background-color: #1FDF64;
+}
+
+.rhap_progress-container .rhap_progress-indicator {
+  background-color:#1FDF64;
+  opacity: 0;
+}
+
+.rhap_progress-container .rhap_download-progress {
+  background-color: rgb(45, 45, 45);
+}
+
+
 
 .controls {
   display: flex;
