@@ -33,7 +33,7 @@ function FavoritesCard({stars, title, artist, image,id,handleDelete, updateStarR
         method: 'DELETE',
     })
         .then (r => r.json())
-        .then (() => handleDelete(id))
+        .then (() => handleDelete(id, title))
     }
 
     const starCount = stars;

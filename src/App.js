@@ -41,13 +41,17 @@ function App() {
     return data.name.toLowerCase().includes(newSearch) ||data.artists[0].name.toLowerCase().includes(newSearch)
   })
 
-  function handleDelete(songId){
+  function handleDelete(songId, title){
     const newData = favoritedData.filter(song => songId!== song.id)
+    const newFavorited = isFavorited.filter(favoritedTitle => title !== favoritedTitle)
     setFavoritedData(newData)
+    setIsFavorited(newFavorited)
   }
 
-  useEffect(() => {
 
+
+  useEffect(() => {
+    const initFavorites = [];
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const requestOptions = {
@@ -65,7 +69,13 @@ function App() {
 
     fetch(url)
     .then(resp => resp.json())
-    .then(data => setFavoritedData(data));
+    .then(data => {
+      setFavoritedData(data)
+      data.forEach(song => {
+        initFavorites.push(song.title)
+      })
+      setIsFavorited(initFavorites);
+    });
 
     }, [])
 
