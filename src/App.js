@@ -107,7 +107,7 @@ function App() {
     <div className="horizontal">
       <div className="left-block">
         <Nav />
-        <Favorites updateStarRating={updateStarRating} favoritedData={favoritedData} handleDelete={handleDelete} />
+        <Favorites handlePlayIsClicked={handlePlayIsClicked} handleIsPlaying={handleIsPlaying} playIsClicked={playIsClicked} updateStarRating={updateStarRating} favoritedData={favoritedData} handleDelete={handleDelete} />
       </div>
       <Routes>
         <Route path="/main" element={<Main handleIsPlaying={handleIsPlaying} playIsClicked={playIsClicked} handlePlayIsClicked={handlePlayIsClicked} addNewFavoritedSong={addNewFavoritedSong} addIsFavorited={addIsFavorited} isFavorited={isFavorited} spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData}/>}/>
