@@ -1,16 +1,31 @@
 import playBtn from './assets/icons8-play-button-32.png'
 import pauseBtn from './assets/icons8-pause-button-32.png';
-import {useState} from 'react';
 import activeHeart from './assets/heart-active.png';
 import inactiveHeart from './assets/heart-inactive.png';
 import {Link} from 'react-router-dom';
-function SongCard({addNewFavoritedSong, name, artist, image, id, addBioData, addArtistData, addArtistId, addIsFavorited, isFavorited}) {
+function SongCard({handleIsPlaying, playIsClicked, handlePlayIsClicked, addNewFavoritedSong, name, artist, image, id, addBioData, addArtistData, addArtistId, addIsFavorited, isFavorited}) {
     const nameReduced = name.substring(0, 19);
-    const [isClicked, setIsClicked] = useState(false);
     const url = 'http://localhost:3001/spotify';
     function handleClick() {
-        setIsClicked(!isClicked)
+        handlePlayIsClicked(name);
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        const requestOptions = {
+            method: "get",
+            headers: myHeaders,
+            redirect: "follow",
+    
+        };
+
+        fetch(`https://v1.nocodeapi.com/tanopaul/spotify/foDEddECFnQTlbOH/search?q=${name} ${artist}&type=track&perPage=1`, requestOptions)
+            .then(response => response.json())
+            .then(result => handleIsPlaying(result.tracks.items[0].preview_url))
+            .catch(error => console.log('error', error));
     }
+
+    const isPlayClicked = playIsClicked.includes(name);
+
 
     function handleHeartClick() {
         const favoritedObj = {
@@ -65,7 +80,7 @@ function SongCard({addNewFavoritedSong, name, artist, image, id, addBioData, add
             <Link exact to={`/${id}`}>
             <img onClick={handlePageChange} src={image} alt="album cover" className="album-img" />
             </Link>
-            <img onClick={handleClick} src={isClicked ? pauseBtn : playBtn} alt="play buttons" className="play-btn" />
+            <img onClick={handleClick} src={isPlayClicked ? pauseBtn : playBtn} alt="play buttons" className="play-btn" />
             <div className='card-song-info'>
                 <div>
                     <h3>{name.length > 19 ?  `${nameReduced}...` : `${nameReduced}`}</h3>

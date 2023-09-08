@@ -88,6 +88,9 @@ li {
   width: 100vw;
   margin: 0px;
   height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -181,6 +184,37 @@ li {
 
 /* ---------------------------Player-----------------------
 /* Styling for the Play/Pause button */
+
+.rhap_container svg {
+  color: #1FDF64;
+}
+
+.rhap_volume-bar .rhap_volume-indicator {
+  opacity: 0;
+}
+
+.rhap_volume-bar-area .rhap_volume-bar {
+  background-color: rgb(45, 45, 45);
+}
+
+.rhap_progress-section .rhap_time {
+  color: white;
+}
+
+.rhap_progress-container .rhap_progress-filled {
+  background-color: #1FDF64;
+}
+
+.rhap_progress-container .rhap_progress-indicator {
+  background-color:#1FDF64;
+  opacity: 0;
+}
+
+.rhap_progress-container .rhap_download-progress {
+  background-color: rgb(45, 45, 45);
+}
+
+
 
 .controls {
   display: flex;
@@ -493,6 +527,10 @@ li {
 
 /* ------------------- FAVORITES ---------------------- */
 
+.favorites-card {
+  position: relative;
+}
+
 .favorites {
   padding-top: 20px;
   padding-left: 30px;
@@ -520,6 +558,24 @@ li {
   
 }
 
+.favorites-playpause-btn {
+  background-color: #1FDF64;
+  border-radius: 50px;
+  padding: 7px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 38px;
+  width: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.favorites-card:hover .favorites-playpause-btn{
+  opacity: 1;
+  cursor: pointer;
+}
+
 /* ------------------------ FAVORITE CARDS ----------------------- */
 
 
@@ -534,9 +590,9 @@ li {
 }
 
 .change-rating {
-  
-  
-  margin-right: 10px;
+  position: absolute;
+  top: 20px;
+  right: 125px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -571,7 +627,9 @@ li {
 .favorites-card-heart {
   height: 30px;
   width: auto;
-  position: relative;
+  position: absolute;
+  top: 18px;
+  right: 75px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }

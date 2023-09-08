@@ -1,8 +1,9 @@
-
+import playBtn from './assets/icons8-play-button-32.png'
+import pauseBtn from './assets/icons8-pause-button-32.png';
 import heartActive from './assets/icons8-broken-heart-32.png';
 import {useState} from 'react';
 
-function FavoritesCard({stars, title, artist, image,id,handleDelete, updateStarRating}) {
+function FavoritesCard({handlePlayIsClicked, handleIsPlaying, playIsClicked, stars, title, artist, image,id,handleDelete, updateStarRating}) {
 
 
     const [isClicked, setIsClicked] = useState(false);
@@ -33,13 +34,32 @@ function FavoritesCard({stars, title, artist, image,id,handleDelete, updateStarR
         method: 'DELETE',
     })
         .then (r => r.json())
-        .then (() => handleDelete(id))
+        .then (() => handleDelete(id, title))
     }
 
     const starCount = stars;
     const starsArr = [];
     for (let i = 0; i < starCount; i++) {
         starsArr.push('⭐️')
+    }
+    const isPlayClicked = playIsClicked.includes(title);
+
+    function handlePlayButtonFav() {
+        handlePlayIsClicked(title)
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        const requestOptions = {
+            method: "get",
+            headers: myHeaders,
+            redirect: "follow",
+    
+        };
+
+        fetch(`https://v1.nocodeapi.com/tanopaul/spotify/foDEddECFnQTlbOH/search?q=${title} ${artist}&type=track&perPage=1`, requestOptions)
+            .then(response => response.json())
+            .then(result => handleIsPlaying(result.tracks.items[0].preview_url))
+            .catch(error => console.log('error', error));
     }
 
     return (
@@ -62,6 +82,9 @@ function FavoritesCard({stars, title, artist, image,id,handleDelete, updateStarR
                 </div>
                 <div>
                     <img className='favorites-card-heart' src={heartActive} alt="delete" onClick={deleteFav} />
+                </div>
+                <div>
+                    <img onClick={handlePlayButtonFav} src={isPlayClicked ? pauseBtn : playBtn} alt="play buttons" className="favorites-playpause-btn" />
                 </div>
             </div> 
         </div>

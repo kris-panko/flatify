@@ -18,6 +18,16 @@ function App() {
   const [newSearch,setNewSearch] = useState("")
   const [isFavorited, setIsFavorited] = useState([]);
   const [favoritedData, setFavoritedData] = useState([]);
+  const [playIsClicked, setPlayIsClicked] = useState([]);
+  const [isPlaying, setIsPlaying] = useState([]);
+
+  function handlePlayIsClicked(name) {
+    setPlayIsClicked([name])
+  }
+
+  function handleIsPlaying(mp3) {
+    setIsPlaying(mp3)
+  }
 
   function updateStarRating(songId, newRating) {
     const newFavorites = favoritedData.map((song) => {
@@ -41,13 +51,17 @@ function App() {
     return data.name.toLowerCase().includes(newSearch) ||data.artists[0].name.toLowerCase().includes(newSearch)
   })
 
-  function handleDelete(songId){
+  function handleDelete(songId, title){
     const newData = favoritedData.filter(song => songId!== song.id)
+    const newFavorited = isFavorited.filter(favoritedTitle => title !== favoritedTitle)
     setFavoritedData(newData)
+    setIsFavorited(newFavorited)
   }
 
-  useEffect(() => {
 
+
+  useEffect(() => {
+    const initFavorites = [];
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const requestOptions = {
@@ -65,7 +79,13 @@ function App() {
 
     fetch(url)
     .then(resp => resp.json())
-    .then(data => setFavoritedData(data));
+    .then(data => {
+      setFavoritedData(data)
+      data.forEach(song => {
+        initFavorites.push(song.title)
+      })
+      setIsFavorited(initFavorites);
+    });
 
     }, [])
 
@@ -87,15 +107,15 @@ function App() {
     <div className="horizontal">
       <div className="left-block">
         <Nav />
-        <Favorites updateStarRating={updateStarRating} favoritedData={favoritedData} handleDelete={handleDelete} />
+        <Favorites handlePlayIsClicked={handlePlayIsClicked} handleIsPlaying={handleIsPlaying} playIsClicked={playIsClicked} updateStarRating={updateStarRating} favoritedData={favoritedData} handleDelete={handleDelete} />
       </div>
       <Routes>
-        <Route path="/main" element={<Main addNewFavoritedSong={addNewFavoritedSong} addIsFavorited={addIsFavorited} isFavorited={isFavorited} spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData}/>}/>
+        <Route path="/main" element={<Main handleIsPlaying={handleIsPlaying} playIsClicked={playIsClicked} handlePlayIsClicked={handlePlayIsClicked} addNewFavoritedSong={addNewFavoritedSong} addIsFavorited={addIsFavorited} isFavorited={isFavorited} spotifyData={spotifyData} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData}/>}/>
         <Route path= {`/${id}`} element={<ArtistInfo bioData={bioData} artistData={artistData}  />}/>
-        <Route path="/search" element={<Search addNewFavoritedSong={addNewFavoritedSong} addIsFavorited={addIsFavorited} isFavorited={isFavorited} spotifyData={filterSearch} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData} newSearch={newSearch} musicSearch={musicSearch} />}/>
+        <Route path="/search" element={<Search handleIsPlaying={handleIsPlaying} playIsClicked={playIsClicked} handlePlayIsClicked={handlePlayIsClicked} addNewFavoritedSong={addNewFavoritedSong} addIsFavorited={addIsFavorited} isFavorited={isFavorited} spotifyData={filterSearch} addBioData={addBioData} addArtistId={addArtistId}  addArtistData={addArtistData} newSearch={newSearch} musicSearch={musicSearch} />}/>
       </Routes>
     </div>
-    <Player />
+    <Player isPlaying={isPlaying} />
   </div>
   );
 }
